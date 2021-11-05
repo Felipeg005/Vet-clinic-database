@@ -21,5 +21,32 @@ INSERT INTO owners (full_name, age) VALUES ('Dean Winchester', 14);
 INSERT INTO owners (full_name, age) VALUES ('Jodie Whittaker', 38);
 
 BEGIN;
-UPDATE animals SET species_id = (SELECT name FROM species WHERE name LIKE '%mon');
+UPDATE animals SET species_id = (SELECT id FROM species WHERE name LIKE '%mon');
 COMMIT;
+
+BEGIN;
+UPDATE animals SET species_id = (SELECT id FROM species WHERE name NOT LIKE '%mon');
+COMMIT;
+
+BEGIN;
+UPDATE animals SET owner_id = (SELECT id FROM owners WHERE full_name = 'Sam Smith') WHERE name = 'Agumon';
+COMMIT;
+
+BEGIN;
+UPDATE animals SET owner_id = (SELECT id FROM owners WHERE full_name = 'Jennifer Orwell') WHERE name = 'Gabumon' OR name = 'Pikachu';
+COMMIT;
+
+BEGIN;
+UPDATE animals SET owner_id = (SELECT id FROM owners WHERE full_name = 'Bob') WHERE name = 'Devimon' OR name = 'Plantmon';
+COMMIT;
+
+BEGIN;
+UPDATE animals SET owner_id = (SELECT id FROM owners WHERE full_name = 'Melody Pond') WHERE name = 'Charmander' OR name = 'Squirtle' OR name = 'Blossom';
+COMMIT;
+
+BEGIN;
+UPDATE animals SET owner_id = (SELECT id FROM owners WHERE full_name = 'Dean Winchester') WHERE name = 'Angemon' OR name = 'Boarmon';
+COMMIT;
+
+
+

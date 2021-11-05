@@ -26,6 +26,6 @@ CREATE TABLE animals (
     weight_kg decimal,
     species_id int,
     owner_id int,
-    FOREIGN KEY(species_id) REFERENCES species(id) ON DELETE CASCADE,
-    FOREIGN KEY(owner_id) REFERENCES owners(id) ON DELETE CASCADE
+    CONSTRAINT kf_species FOREIGN KEY(species_id) REFERENCES species(id) ON DELETE CASCADE,
+    CONSTRAINT kf_owners FOREIGN KEY(owner_id) REFERENCES owners(id) ON DELETE CASCADE
 );
